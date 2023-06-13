@@ -61,21 +61,22 @@
             // 
             // lastname
             // 
+            lastname.AutoCompleteMode = AutoCompleteMode.Suggest;
             lastname.BackColor = SystemColors.Window;
-            lastname.CharacterCasing = CharacterCasing.Upper;
             lastname.Location = new Point(311, 60);
             lastname.Name = "lastname";
             lastname.Size = new Size(277, 27);
             lastname.TabIndex = 1;
+            lastname.TextChanged += textBox_TextChanged;
             // 
             // firstname
             // 
             firstname.BackColor = SystemColors.Window;
-            firstname.CharacterCasing = CharacterCasing.Upper;
             firstname.Location = new Point(311, 101);
             firstname.Name = "firstname";
             firstname.Size = new Size(278, 27);
-            firstname.TabIndex = 1;
+            firstname.TabIndex = 2;
+            firstname.TextChanged += textBox_TextChanged;
             // 
             // label1
             // 
@@ -93,11 +94,11 @@
             // patronymicname
             // 
             patronymicname.BackColor = SystemColors.Window;
-            patronymicname.CharacterCasing = CharacterCasing.Upper;
             patronymicname.Location = new Point(311, 141);
             patronymicname.Name = "patronymicname";
             patronymicname.Size = new Size(278, 27);
-            patronymicname.TabIndex = 1;
+            patronymicname.TabIndex = 3;
+            patronymicname.TextChanged += textBox_TextChanged;
             // 
             // label2
             // 
@@ -147,7 +148,7 @@
             savedata.Location = new Point(311, 310);
             savedata.Name = "savedata";
             savedata.Size = new Size(141, 33);
-            savedata.TabIndex = 16;
+            savedata.TabIndex = 5;
             savedata.Text = "Зберегти";
             savedata.UseVisualStyleBackColor = false;
             savedata.Click += saveButton_Click;
@@ -171,7 +172,7 @@
             date.Location = new Point(311, 181);
             date.Name = "date";
             date.Size = new Size(278, 27);
-            date.TabIndex = 1;
+            date.TabIndex = 4;
             // 
             // pictureBox2
             // 
