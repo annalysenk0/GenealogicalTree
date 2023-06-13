@@ -98,7 +98,7 @@
             // 
             uploudTree.Name = "uploudTree";
             resources.ApplyResources(uploudTree, "uploudTree");
-            uploudTree.Click += uploudTree_Click;
+            uploudTree.Click += uploadTree_Click;
             // 
             // cleanTree
             // 

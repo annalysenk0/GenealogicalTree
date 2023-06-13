@@ -14,10 +14,12 @@ namespace Дерево
     public partial class Form1 : Form
     {
         private BuildTree buildTree;
+        private SearchTree searchTree;
         public Form1()
         {
             InitializeComponent();
             buildTree = new BuildTree(treeView);
+            searchTree = new SearchTree(treeView);
         }
 
         private void BuildFamilyTree(FamilyMember member, TreeNode parentNode)
@@ -115,111 +117,17 @@ namespace Дерево
             CleanTree();
         }
 
-        //public void AddRoot()
-        //{
-        //    using (FormInfo newForm = new FormInfo())
-        //    {
-        //        newForm.ShowDialog();
-
-        //        Module modules = newForm.Data;
-
-        //        if (modules != null)
-        //        {
-        //            // Створення тексту вузла з іменем та датою народження
-        //            string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
-        //            string nodeDate = modules.Date;
-        //            nodeText += " " + "(" + nodeDate + ")";
-
-        //            // Створення нового вузла з головним нащадком
-        //            TreeNode rootNode = new TreeNode(nodeText);
-        //            rootNode.Tag = modules;
-
-        //            // Додавання вузла до дерева
-        //            treeView.Nodes.Add(rootNode);
-        //        }
-        //    }
-        //}
-
 
         private void openNewForm_Click(object sender, EventArgs e)
         {
             buildTree.AddRoot();
         }
 
-        //public void AddNode()
-        //{
-        //    using (FormInfo newForm = new FormInfo())
-        //    {
-        //        newForm.ShowDialog();
-
-        //        Module modules = newForm.Data;
-
-        //        if (modules != null)
-        //        {
-        //            // Створення тексту вузла з іменем та датою народження
-        //            string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
-        //            string nodeDate = modules.Date;
-        //            nodeText += " " + "(" + nodeDate + ")";
-
-        //            // Створення нового вузла з головним нащадком
-        //            TreeNode rootNode = new TreeNode(nodeText);
-        //            rootNode.Tag = modules;
-
-        //            // Отримання вибраного вузла в дереві
-        //            TreeNode selectedNode = treeView.SelectedNode;
-
-        //            if (selectedNode != null)
-        //            {
-        //                // Додавання нового вузла як нащадка до вибраного вузла
-        //                selectedNode.Nodes.Add(rootNode);
-        //            }
-        //            else
-        //            {
-        //                // Якщо не вибрано жодного вузла, додати новий вузол до кореня дерева
-        //                treeView.Nodes.Add(rootNode);
-        //            }
-        //        }
-        //    }
-        //}
-
 
         private void addNode_Click(object sender, EventArgs e)
         {
             buildTree.AddNode();
         }
-
-        //public void EditNode()
-        //{
-        //    TreeNode selectedNode = treeView.SelectedNode;
-
-        //    if (selectedNode != null)
-        //    {
-        //        Module modules = selectedNode.Tag as Module;
-
-        //        if (modules != null)
-        //        {
-        //            using (FormInfo newForm = new FormInfo())
-        //            {
-        //                newForm.GetData(modules); // Передача даних вузла до форми редагування
-        //                newForm.ShowDialog();
-
-        //                Module updatedModules = newForm.Data;
-
-        //                if (updatedModules != null)
-        //                {
-        //                    // Оновлення тексту вузла з оновленими даними
-        //                    string nodeText = updatedModules.LastName + " " + updatedModules.FirstName + " " + updatedModules.PatronymicName;
-        //                    string nodeDate = updatedModules.Date;
-        //                    nodeText += " " + "(" + nodeDate + ")";
-        //                    selectedNode.Text = nodeText;
-
-        //                    // Оновлення даних вузла
-        //                    selectedNode.Tag = updatedModules;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
 
 
         private void editNode_Click(object sender, EventArgs e)
@@ -228,95 +136,11 @@ namespace Дерево
         }
 
 
-
-
-        private void ExpandAllNodes(TreeNodeCollection nodes)
-        {
-            foreach (TreeNode node in nodes)
-            {
-                node.Expand();
-                ExpandAllNodes(node.Nodes);
-            }
-        }
-
-        public void SearchConnexion()
-        {
-            Search searchForm = new Search();
-
-            TreeNode selectedNode = treeView.SelectedNode;
-            if (selectedNode != null)
-            {
-                ExpandAllNodes(treeView.Nodes);
-                searchForm.node.Text = selectedNode.Text;
-
-                List<string> descendants = GetDescendants(selectedNode);
-                if (descendants.Count > 0)
-                {
-                    searchForm.posterity.Text = string.Join(Environment.NewLine, descendants);
-                }
-                else
-                {
-                    searchForm.posterity.Text = "Нащадків не знайдено.";
-                }
-
-                List<string> ancestors = GetAncestors(selectedNode);
-                if (ancestors.Count > 0)
-                {
-                    searchForm.ancestry.Text = string.Join(Environment.NewLine, ancestors);
-                }
-                else
-                {
-                    searchForm.ancestry.Text = "Предків не знайдено.";
-                }
-
-                searchForm.ShowDialog();
-            }
-        }
-
         private void search_Click(object sender, EventArgs e)
         {
-            SearchConnexion();
+            searchTree.SearchConnexion();
         }
 
-        private List<string> GetDescendants(TreeNode node)
-        {
-            List<string> descendants = new List<string>();
-            foreach (TreeNode childNode in node.Nodes)
-            {
-                descendants.Add(childNode.Text);
-                descendants.AddRange(GetDescendants(childNode));
-            }
-            return descendants;
-        }
-
-        private List<string> GetAncestors(TreeNode node)
-        {
-            List<string> ancestors = new List<string>();
-            TreeNode parent = node.Parent;
-            while (parent != null)
-            {
-                ancestors.Add(parent.Text);
-                parent = parent.Parent;
-            }
-            return ancestors;
-        }
-
-        //public void DeleteNode()
-        //{
-        //    // Переконайтеся, що вузол є обраним
-        //    if (treeView.SelectedNode != null)
-        //    {
-        //        // Показати підтверджувальне повідомлення
-        //        DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-        //        // Перевірка результату підтвердження
-        //        if (result == DialogResult.Yes)
-        //        {
-        //            // Видалення обраного вузла
-        //            treeView.SelectedNode.Remove();
-        //        }
-        //    }
-        //}
 
         private void deleteNode_Click(object sender, EventArgs e)
         {
@@ -337,7 +161,7 @@ namespace Дерево
             MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void UploudTree()
+        public void UploadTree()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.json)|*.json";
@@ -356,9 +180,9 @@ namespace Дерево
             }
         }
 
-        private void uploudTree_Click(object sender, EventArgs e)
+        private void uploadTree_Click(object sender, EventArgs e)
         {
-            UploudTree();
+            UploadTree();
         }
 
         public class SerializableTreeNode
