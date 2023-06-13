@@ -25,7 +25,7 @@ namespace Дерево
             return modules;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        public void SaveData()
         {
             string firstName = firstname.Text;
             string lastName = lastname.Text;
@@ -38,6 +38,11 @@ namespace Дерево
             this.Close();
 
             MessageBox.Show("Дані збережено успішно.", "Повідомлення");
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            SaveData();
         }
 
         public Module GetModules()

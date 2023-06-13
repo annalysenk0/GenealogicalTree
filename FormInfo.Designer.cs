@@ -62,6 +62,7 @@
             // lastname
             // 
             lastname.BackColor = SystemColors.Window;
+            lastname.CharacterCasing = CharacterCasing.Upper;
             lastname.Location = new Point(311, 60);
             lastname.Name = "lastname";
             lastname.Size = new Size(277, 27);
@@ -70,10 +71,11 @@
             // firstname
             // 
             firstname.BackColor = SystemColors.Window;
+            firstname.CharacterCasing = CharacterCasing.Upper;
             firstname.Location = new Point(311, 101);
             firstname.Name = "firstname";
             firstname.Size = new Size(278, 27);
-            firstname.TabIndex = 3;
+            firstname.TabIndex = 1;
             // 
             // label1
             // 
@@ -91,10 +93,11 @@
             // patronymicname
             // 
             patronymicname.BackColor = SystemColors.Window;
+            patronymicname.CharacterCasing = CharacterCasing.Upper;
             patronymicname.Location = new Point(311, 141);
             patronymicname.Name = "patronymicname";
             patronymicname.Size = new Size(278, 27);
-            patronymicname.TabIndex = 5;
+            patronymicname.TabIndex = 1;
             // 
             // label2
             // 
@@ -168,7 +171,7 @@
             date.Location = new Point(311, 181);
             date.Name = "date";
             date.Size = new Size(278, 27);
-            date.TabIndex = 18;
+            date.TabIndex = 1;
             // 
             // pictureBox2
             // 
@@ -213,6 +216,7 @@
             Name = "FormInfo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormInfo";
+            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

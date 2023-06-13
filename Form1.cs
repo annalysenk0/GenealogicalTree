@@ -334,13 +334,6 @@ namespace Дерево
             MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //public class SerializableTreeNode
-        //{
-        //    public string Text { get; set; }
-        //    public object Tag { get; set; }
-        //    public List<SerializableTreeNode> Nodes { get; set; }
-        //}
-
         public void UploudTree()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
