@@ -57,7 +57,7 @@ namespace Дерево
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            
+            //ExpandAllNodes();
             SaveData();
         }
 

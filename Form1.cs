@@ -6,15 +6,18 @@ using System.Text;
 using System.Drawing.Imaging;
 using System.Xml;
 using Newtonsoft.Json;
+using GenealogicalTree;
 
 
 namespace Дерево
 {
     public partial class Form1 : Form
     {
+        private BuildTree buildTree;
         public Form1()
         {
             InitializeComponent();
+            buildTree = new BuildTree(treeView);
         }
 
         private void BuildFamilyTree(FamilyMember member, TreeNode parentNode)
@@ -112,116 +115,116 @@ namespace Дерево
             CleanTree();
         }
 
-        public void AddRoot()
-        {
-            using (FormInfo newForm = new FormInfo())
-            {
-                newForm.ShowDialog();
+        //public void AddRoot()
+        //{
+        //    using (FormInfo newForm = new FormInfo())
+        //    {
+        //        newForm.ShowDialog();
 
-                Module modules = newForm.Data;
+        //        Module modules = newForm.Data;
 
-                if (modules != null)
-                {
-                    // Створення тексту вузла з іменем та датою народження
-                    string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
-                    string nodeDate = modules.Date;
-                    nodeText += " " + "(" + nodeDate + ")";
+        //        if (modules != null)
+        //        {
+        //            // Створення тексту вузла з іменем та датою народження
+        //            string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
+        //            string nodeDate = modules.Date;
+        //            nodeText += " " + "(" + nodeDate + ")";
 
-                    // Створення нового вузла з головним нащадком
-                    TreeNode rootNode = new TreeNode(nodeText);
-                    rootNode.Tag = modules;
+        //            // Створення нового вузла з головним нащадком
+        //            TreeNode rootNode = new TreeNode(nodeText);
+        //            rootNode.Tag = modules;
 
-                    // Додавання вузла до дерева
-                    treeView.Nodes.Add(rootNode);
-                }
-            }
-        }
+        //            // Додавання вузла до дерева
+        //            treeView.Nodes.Add(rootNode);
+        //        }
+        //    }
+        //}
 
 
         private void openNewForm_Click(object sender, EventArgs e)
         {
-            AddRoot();
+            buildTree.AddRoot();
         }
 
-        public void AddNode()
-        {
-            using (FormInfo newForm = new FormInfo())
-            {
-                newForm.ShowDialog();
+        //public void AddNode()
+        //{
+        //    using (FormInfo newForm = new FormInfo())
+        //    {
+        //        newForm.ShowDialog();
 
-                Module modules = newForm.Data;
+        //        Module modules = newForm.Data;
 
-                if (modules != null)
-                {
-                    // Створення тексту вузла з іменем та датою народження
-                    string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
-                    string nodeDate = modules.Date;
-                    nodeText += " " + "(" + nodeDate + ")";
+        //        if (modules != null)
+        //        {
+        //            // Створення тексту вузла з іменем та датою народження
+        //            string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
+        //            string nodeDate = modules.Date;
+        //            nodeText += " " + "(" + nodeDate + ")";
 
-                    // Створення нового вузла з головним нащадком
-                    TreeNode rootNode = new TreeNode(nodeText);
-                    rootNode.Tag = modules;
+        //            // Створення нового вузла з головним нащадком
+        //            TreeNode rootNode = new TreeNode(nodeText);
+        //            rootNode.Tag = modules;
 
-                    // Отримання вибраного вузла в дереві
-                    TreeNode selectedNode = treeView.SelectedNode;
+        //            // Отримання вибраного вузла в дереві
+        //            TreeNode selectedNode = treeView.SelectedNode;
 
-                    if (selectedNode != null)
-                    {
-                        // Додавання нового вузла як нащадка до вибраного вузла
-                        selectedNode.Nodes.Add(rootNode);
-                    }
-                    else
-                    {
-                        // Якщо не вибрано жодного вузла, додати новий вузол до кореня дерева
-                        treeView.Nodes.Add(rootNode);
-                    }
-                }
-            }
-        }
+        //            if (selectedNode != null)
+        //            {
+        //                // Додавання нового вузла як нащадка до вибраного вузла
+        //                selectedNode.Nodes.Add(rootNode);
+        //            }
+        //            else
+        //            {
+        //                // Якщо не вибрано жодного вузла, додати новий вузол до кореня дерева
+        //                treeView.Nodes.Add(rootNode);
+        //            }
+        //        }
+        //    }
+        //}
 
 
         private void addNode_Click(object sender, EventArgs e)
         {
-            AddNode();
+            buildTree.AddNode();
         }
 
-        public void EditNode()
-        {
-            TreeNode selectedNode = treeView.SelectedNode;
+        //public void EditNode()
+        //{
+        //    TreeNode selectedNode = treeView.SelectedNode;
 
-            if (selectedNode != null)
-            {
-                Module modules = selectedNode.Tag as Module;
+        //    if (selectedNode != null)
+        //    {
+        //        Module modules = selectedNode.Tag as Module;
 
-                if (modules != null)
-                {
-                    using (FormInfo newForm = new FormInfo())
-                    {
-                        newForm.GetData(modules); // Передача даних вузла до форми редагування
-                        newForm.ShowDialog();
+        //        if (modules != null)
+        //        {
+        //            using (FormInfo newForm = new FormInfo())
+        //            {
+        //                newForm.GetData(modules); // Передача даних вузла до форми редагування
+        //                newForm.ShowDialog();
 
-                        Module updatedModules = newForm.Data;
+        //                Module updatedModules = newForm.Data;
 
-                        if (updatedModules != null)
-                        {
-                            // Оновлення тексту вузла з оновленими даними
-                            string nodeText = updatedModules.LastName + " " + updatedModules.FirstName + " " + updatedModules.PatronymicName;
-                            string nodeDate = updatedModules.Date;
-                            nodeText += " " + "(" + nodeDate + ")";
-                            selectedNode.Text = nodeText;
+        //                if (updatedModules != null)
+        //                {
+        //                    // Оновлення тексту вузла з оновленими даними
+        //                    string nodeText = updatedModules.LastName + " " + updatedModules.FirstName + " " + updatedModules.PatronymicName;
+        //                    string nodeDate = updatedModules.Date;
+        //                    nodeText += " " + "(" + nodeDate + ")";
+        //                    selectedNode.Text = nodeText;
 
-                            // Оновлення даних вузла
-                            selectedNode.Tag = updatedModules;
-                        }
-                    }
-                }
-            }
-        }
+        //                    // Оновлення даних вузла
+        //                    selectedNode.Tag = updatedModules;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
 
         private void editNode_Click(object sender, EventArgs e)
         {
-            EditNode();
+            buildTree.EditNode();
         }
 
 
@@ -298,26 +301,26 @@ namespace Дерево
             return ancestors;
         }
 
-        public void DeleteNode()
-        {
-            // Переконайтеся, що вузол є обраним
-            if (treeView.SelectedNode != null)
-            {
-                // Показати підтверджувальне повідомлення
-                DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //public void DeleteNode()
+        //{
+        //    // Переконайтеся, що вузол є обраним
+        //    if (treeView.SelectedNode != null)
+        //    {
+        //        // Показати підтверджувальне повідомлення
+        //        DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Перевірка результату підтвердження
-                if (result == DialogResult.Yes)
-                {
-                    // Видалення обраного вузла
-                    treeView.SelectedNode.Remove();
-                }
-            }
-        }
+        //        // Перевірка результату підтвердження
+        //        if (result == DialogResult.Yes)
+        //        {
+        //            // Видалення обраного вузла
+        //            treeView.SelectedNode.Remove();
+        //        }
+        //    }
+        //}
 
         private void deleteNode_Click(object sender, EventArgs e)
         {
-            DeleteNode();
+            buildTree.DeleteNode();
         }
 
         public void CreatePicture()
