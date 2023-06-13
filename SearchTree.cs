@@ -15,15 +15,6 @@ namespace GenealogicalTree
             this.treeView = treeView;
         }
 
-        //private void ExpandAllNodes(TreeNodeCollection nodes)
-        //{
-        //    foreach (TreeNode node in nodes)
-        //    {
-        //        node.Expand();
-        //        ExpandAllNodes(node.Nodes);
-        //    }
-        //}
-
         public void SearchConnexion()
         {
             Search searchForm = new Search();

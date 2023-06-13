@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Дерево;
 
 namespace GenealogicalTree
 {
@@ -29,8 +30,18 @@ namespace GenealogicalTree
                 // Очищення поточного дерева перед завантаженням нового
                 treeView.Nodes.Clear();
 
-                // Додавання завантажених вузлів до дерева
-                treeView.Nodes.AddRange(ConvertToTreeViewNodes(nodes).ToArray());
+                List<TreeNode> treeNodes = ConvertToTreeViewNodes(nodes);
+                foreach (var treeNode in treeNodes)
+                {
+                    // Отримання відповідного об'єкту Module
+                    Module modules = treeNode.Tag as Module;
+
+                    // Присвоєння властивості Tag об'єкту Module
+                    treeNode.Tag = modules;
+                }
+
+                treeView.Nodes.AddRange(treeNodes.ToArray());
+
             }
         }
 

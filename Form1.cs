@@ -17,6 +17,7 @@ namespace Дерево
         private SearchTree searchTree;
         private DoneTree doneTree;
         private SaveTree saveTree;
+        private TreePicture treePicture;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Дерево
             searchTree = new SearchTree(treeView);
             doneTree = new DoneTree(treeView);
             saveTree = new SaveTree(treeView);
+            treePicture = new TreePicture(treeView);
         }
 
         private void BuildFamilyTree(FamilyMember member, TreeNode parentNode)
@@ -65,36 +67,6 @@ namespace Дерево
             }
         }
 
-        //public void SaveInfo()
-        //{
-        //    // Створення діалогового вікна збереження файлу
-        //    SaveFileDialog saveDialog = new SaveFileDialog();
-        //    saveDialog.Filter = "JSON файл (*.json)|*.json";
-        //    saveDialog.Title = "Зберегти дерево вузлів";
-
-        //    // Показуємо діалогове вікно та очікуємо вибору користувача
-        //    DialogResult result = saveDialog.ShowDialog();
-
-        //    // Перевіряємо, чи користувач обрав файл та натиснув кнопку "Зберегти"
-        //    if (result == DialogResult.OK)
-        //    {
-        //        // Отримуємо шлях до вибраного файлу
-        //        string filePath = saveDialog.FileName;
-
-        //        // Отримання дерева вузлів у вигляді колекції SerializableTreeNode
-        //        var nodes = ConvertToSerializableNodes(treeView.Nodes);
-
-        //        // Конвертування дерева вузлів у JSON-рядок
-        //        string json = JsonConvert.SerializeObject(nodes, Newtonsoft.Json.Formatting.Indented);
-
-        //        // Збереження JSON-рядка у вибраний файл
-        //        File.WriteAllText(filePath, json);
-
-        //        // Повідомлення про успішне збереження
-        //        MessageBox.Show($"Дані з дерева були успішно збережені у файл {filePath}.");
-        //    }
-        //}
-
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
             saveTree.SaveInfo();
@@ -133,44 +105,11 @@ namespace Дерево
             buildTree.AddNode();
         }
 
-        //public void EditNode()
-        //{
-        //    TreeNode selectedNode = treeView.SelectedNode;
-
-        //    if (selectedNode != null)
-        //    {
-        //        Module modules = selectedNode.Tag as Module;
-
-        //        if (modules != null)
-        //        {
-        //            using (FormInfo newForm = new FormInfo())
-        //            {
-        //                newForm.GetData(modules); // Передача даних вузла до форми редагування
-        //                newForm.ShowDialog();
-
-        //                Module updatedModules = newForm.Data;
-
-        //                if (updatedModules != null)
-        //                {
-        //                    // Оновлення тексту вузла з оновленими даними
-        //                    string nodeText = updatedModules.LastName + " " + updatedModules.FirstName + " " + updatedModules.PatronymicName;
-        //                    string nodeDate = updatedModules.Date;
-        //                    nodeText += " " + "(" + nodeDate + ")";
-        //                    selectedNode.Text = nodeText;
-
-        //                    // Оновлення даних вузла
-        //                    selectedNode.Tag = updatedModules;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
 
         private void editNode_Click(object sender, EventArgs e)
         {
             buildTree.EditNode();
         }
-
 
 
         private void search_Click(object sender, EventArgs e)
@@ -184,91 +123,27 @@ namespace Дерево
             buildTree.DeleteNode();
         }
 
-        public void CreatePicture()
-        {
-            // Створення об'єкту Bitmap для збереження зображення
-            Bitmap image = new Bitmap(treeView.Width, treeView.Height);
+        //public void CreatePicture()
+        //{
+        //    // Створення об'єкту Bitmap для збереження зображення
+        //    Bitmap image = new Bitmap(treeView.Width, treeView.Height);
 
-            // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
-            treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
+        //    // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
+        //    treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
 
-            // Збереження зображення
-            image.Save("C:\\Users\\anech\\source\\repos\\Дерево\\tree_picture\\treeview_image.png", ImageFormat.Png);
+        //    // Збереження зображення
+        //    image.Save("C:\\Users\\anech\\source\\repos\\Дерево\\tree_picture\\treeview_image.png", ImageFormat.Png);
 
-            MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        //    MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
         private void uploadTree_Click(object sender, EventArgs e)
         {
             doneTree.UploadTree();
         }
 
-        //public void UploadTree()
-        //{
-        //    OpenFileDialog openFileDialog = new OpenFileDialog();
-        //    openFileDialog.Filter = "JSON files (*.json)|*.json";
-        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        string jsonFilePath = openFileDialog.FileName;
-        //        string jsonContent = File.ReadAllText(jsonFilePath);
-
-        //        List<SerializableTreeNode> nodes = JsonConvert.DeserializeObject<List<SerializableTreeNode>>(jsonContent);
-
-        //        // Очищення поточного дерева перед завантаженням нового
-        //        treeView.Nodes.Clear();
-
-        //        // Додавання завантажених вузлів до дерева
-        //        treeView.Nodes.AddRange(ConvertToTreeViewNodes(nodes).ToArray());
-        //    }
-        //}
-
-
-        //public class SerializableTreeNode
-        //{
-        //    public string Text { get; set; }
-        //    public object Tag { get; set; }
-        //    public List<SerializableTreeNode> Nodes { get; set; }
-        //}
-
-        //private List<SerializableTreeNode> ConvertToSerializableNodes(TreeNodeCollection nodes)
-        //{
-        //    List<SerializableTreeNode> serializableNodes = new List<SerializableTreeNode>();
-        //    foreach (TreeNode node in nodes)
-        //    {
-        //        SerializableTreeNode serializableNode = new SerializableTreeNode
-        //        {
-        //            Text = node.Text,
-        //            Tag = node.Tag,
-        //            Nodes = ConvertToSerializableNodes(node.Nodes)
-        //        };
-        //        serializableNodes.Add(serializableNode);
-        //    }
-        //    return serializableNodes;
-        //}
-
-        //private List<TreeNode> ConvertToTreeViewNodes(List<SerializableTreeNode> serializableNodes)
-        //{
-        //    List<TreeNode> treeNodes = new List<TreeNode>();
-        //    foreach (SerializableTreeNode serializableNode in serializableNodes)
-        //    {
-        //        TreeNode treeNode = new TreeNode
-        //        {
-        //            Text = serializableNode.Text,
-        //            Tag = serializableNode.Tag,
-        //        };
-
-        //        if (serializableNode.Nodes != null)
-        //        {
-        //            treeNode.Nodes.AddRange(ConvertToTreeViewNodes(serializableNode.Nodes).ToArray());
-        //        }
-
-        //        treeNodes.Add(treeNode);
-        //    }
-        //    return treeNodes;
-        //}
-
         private void createPicture_Click(object sender, EventArgs e)
         {
-            CreatePicture();
+            treePicture.CreatePicture();
         }
     }
 
