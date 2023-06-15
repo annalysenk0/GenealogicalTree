@@ -18,11 +18,13 @@ namespace Дерево
     {
         public Module Data { get; private set; }
         private Module modules;
+        //private BuildTree buildTree;
         public FormInfo()
         {
             InitializeComponent();
+
         }
-        private Module GetModulesData(FormInfo form)
+        public Module GetModulesData(FormInfo form)
         {
             return modules;
         }
@@ -80,6 +82,7 @@ namespace Дерево
             patronymicname.Text = modules.PatronymicName;
             date.Text = modules.Date;
         }
+
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {

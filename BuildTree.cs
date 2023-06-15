@@ -75,6 +75,7 @@ namespace GenealogicalTree
                         treeView.Nodes.Add(rootNode);
                     }
                 }
+                
             }
         }
 
@@ -107,11 +108,17 @@ namespace GenealogicalTree
                             selectedNode.Tag = updatedModules;
                         }
                     }
+                    
                 }
+                else
+                    {
+                        MessageBox.Show($"Редагування даних можливе лише при початковому створенні дерева. Завантажене дерево можна лише переглядати, додавати нові зв'язки та робити пошук нащадків й предків", "Попередження");
+                    }
             }
-        }
+                    
+    }
 
-        public void DeleteNode()
+            public void DeleteNode()
         {
             // Переконайтеся, що вузол є обраним
             if (treeView.SelectedNode != null)

@@ -227,17 +227,17 @@
         #endregion
 
         private Label lable0;
-        private TextBox firstname;
         private Label label1;
-        private TextBox patronymicname;
         private Label label2;
         private Label label3;
         private Label label4;
         private Button savedata;
         private Button canceldata;
-        private TextBox date;
-        private TextBox lastname;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
+        public TextBox firstname;
+        public TextBox patronymicname;
+        public TextBox date;
+        public TextBox lastname;
     }
 }

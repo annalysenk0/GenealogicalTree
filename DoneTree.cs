@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Дерево;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GenealogicalTree
 {
@@ -20,58 +21,37 @@ namespace GenealogicalTree
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.json)|*.json";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string jsonFilePath = openFileDialog.FileName;
-                string jsonContent = File.ReadAllText(jsonFilePath);
+            openFileDialog.Title = "Load TreeView from JSON";
+            openFileDialog.ShowDialog();
 
-                List<SerializableTreeNode> nodes = JsonConvert.DeserializeObject<List<SerializableTreeNode>>(jsonContent);
-
-                // Очищення поточного дерева перед завантаженням нового
-                treeView.Nodes.Clear();
-
-                List<TreeNode> treeNodes = ConvertToTreeViewNodes(nodes);
-                foreach (var treeNode in treeNodes)
-                {
-                    // Отримання відповідного об'єкту Module
-                    Module modules = treeNode.Tag as Module;
-
-                    // Присвоєння властивості Tag об'єкту Module
-                    treeNode.Tag = modules;
-                }
-
-                treeView.Nodes.AddRange(treeNodes.ToArray());
-
-            }
-        }
-
-        public class SerializableTreeNode
+        if (openFileDialog.FileName != "")
         {
-            public string Text { get; set; }
-            public object Tag { get; set; }
-            public List<SerializableTreeNode> Nodes { get; set; }
-        }
+            string json = File.ReadAllText(openFileDialog.FileName);
+            List<Module> modules = JsonConvert.DeserializeObject<List<Module>>(json);
 
+            treeView.Nodes.Clear();
 
-        private List<TreeNode> ConvertToTreeViewNodes(List<SerializableTreeNode> serializableNodes)
-        {
-            List<TreeNode> treeNodes = new List<TreeNode>();
-            foreach (SerializableTreeNode serializableNode in serializableNodes)
+            foreach (Module module in modules)
             {
-                TreeNode treeNode = new TreeNode
-                {
-                    Text = serializableNode.Text,
-                    Tag = serializableNode.Tag,
-                };
-
-                if (serializableNode.Nodes != null)
-                {
-                    treeNode.Nodes.AddRange(ConvertToTreeViewNodes(serializableNode.Nodes).ToArray());
-                }
-
-                treeNodes.Add(treeNode);
+                TreeNode rootNode = CreateTreeNodeFromModule(module);
+                treeView.Nodes.Add(rootNode);
             }
-            return treeNodes;
         }
     }
+        
+        private static TreeNode CreateTreeNodeFromModule(Module module)
+    {
+        TreeNode node = new TreeNode(module.FirstName);
+
+        foreach (Module childModule in module.SubModules)
+        {
+            TreeNode childNode = CreateTreeNodeFromModule(childModule);
+            node.Nodes.Add(childNode);
+        }
+
+        return node;
+    }
+    }
+
 }
+
