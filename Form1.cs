@@ -18,6 +18,7 @@ namespace Дерево
         private DoneTree doneTree;
         private SaveTree saveTree;
         private TreePicture treePicture;
+        //private SpecialTree specialTree;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Дерево
             doneTree = new DoneTree(treeView);
             saveTree = new SaveTree(treeView);
             treePicture = new TreePicture(treeView);
+            //specialTree = new SpecialTree(treeView);
         }
 
         private void BuildFamilyTree(FamilyMember member, TreeNode parentNode)
@@ -144,6 +146,15 @@ namespace Дерево
         private void createPicture_Click(object sender, EventArgs e)
         {
             treePicture.CreatePicture();
+        }
+
+        private void newTree_Click(object sender, EventArgs e)
+        {
+            TreeNode selectedNode = treeView.SelectedNode;
+
+            // Створіть нову форму GenealogyForm і передайте вибраний вузол
+            NewShape genealogyForm = new NewShape();
+            genealogyForm.ShowDialog();
         }
     }
 

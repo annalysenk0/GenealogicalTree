@@ -82,20 +82,26 @@
   <data name="file.Text" xml:space="preserve">
     <value>Файл</value>
   </data>
+  <data name="newTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 26</value>
+  </data>
+  <data name="newTree.Text" xml:space="preserve">
+    <value>Відносно обраного вузла</value>
+  </data>
   <data name="createPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 26</value>
+    <value>287, 26</value>
   </data>
   <data name="createPicture.Text" xml:space="preserve">
     <value>Створити зображення</value>
   </data>
   <data name="uploudTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 26</value>
+    <value>287, 26</value>
   </data>
   <data name="uploudTree.Text" xml:space="preserve">
     <value>Завантажити дерево</value>
   </data>
   <data name="cleanTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 26</value>
+    <value>287, 26</value>
   </data>
   <data name="cleanTree.Text" xml:space="preserve">
     <value>Очистити дерево</value>
@@ -616,7 +622,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 44</value>
+    <value>187, 57</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 32</value>
@@ -920,7 +926,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 164</value>
+    <value>187, 161</value>
   </data>
   <data name="pictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 32</value>
@@ -2779,6 +2785,12 @@
     <value>Tree</value>
   </data>
   <data name="&gt;&gt;Tree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;newTree.Name" xml:space="preserve">
+    <value>newTree</value>
+  </data>
+  <data name="&gt;&gt;newTree.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;createPicture.Name" xml:space="preserve">

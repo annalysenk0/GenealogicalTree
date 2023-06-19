@@ -34,15 +34,15 @@ namespace GenealogicalTree
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "JSON files (*.json)|*.json";
                 saveFileDialog.Title = "Save TreeView as JSON";
-                saveFileDialog.ShowDialog();
+                
 
-                if (saveFileDialog.FileName != "")
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(saveFileDialog.FileName, json);
-                }
 
-            // Повідомлення про успішне збереження
-            MessageBox.Show($"Дані з дерева були успішно збережені.");
+                    // Повідомлення про успішне збереження
+                    MessageBox.Show("Дані з дерева були успішно збережені.");
+                }
         }
 
             private static Module CreateModuleFromTreeNode(TreeNode node)

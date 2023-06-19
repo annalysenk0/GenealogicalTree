@@ -34,6 +34,7 @@
             saveMenuItem = new ToolStripMenuItem();
             exitMenuItem = new ToolStripMenuItem();
             Tree = new ToolStripMenuItem();
+            newTree = new ToolStripMenuItem();
             createPicture = new ToolStripMenuItem();
             uploudTree = new ToolStripMenuItem();
             cleanTree = new ToolStripMenuItem();
@@ -83,10 +84,16 @@
             // 
             // Tree
             // 
-            Tree.DropDownItems.AddRange(new ToolStripItem[] { createPicture, uploudTree, cleanTree });
+            Tree.DropDownItems.AddRange(new ToolStripItem[] { newTree, createPicture, uploudTree, cleanTree });
             resources.ApplyResources(Tree, "Tree");
             Tree.ForeColor = SystemColors.InactiveCaptionText;
             Tree.Name = "Tree";
+            // 
+            // newTree
+            // 
+            newTree.Name = "newTree";
+            resources.ApplyResources(newTree, "newTree");
+            newTree.Click += newTree_Click;
             // 
             // createPicture
             // 
@@ -247,5 +254,6 @@
         private ToolStripMenuItem createPicture;
         private ToolStripMenuItem uploudTree;
         private ToolStripMenuItem cleanTree;
+        private ToolStripMenuItem newTree;
     }
 }
