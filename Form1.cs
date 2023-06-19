@@ -18,7 +18,8 @@ namespace Дерево
         private DoneTree doneTree;
         private SaveTree saveTree;
         private TreePicture treePicture;
-        //private SpecialTree specialTree;
+        private ExpandNodes expandNodes;
+        private SpecialTree specialTree;
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace Дерево
             doneTree = new DoneTree(treeView);
             saveTree = new SaveTree(treeView);
             treePicture = new TreePicture(treeView);
-            //specialTree = new SpecialTree(treeView);
+            //expandNodes = new ExpandNodes(treeView);
+            specialTree = new SpecialTree(treeView);
         }
 
         private void BuildFamilyTree(FamilyMember member, TreeNode parentNode)
@@ -76,7 +78,12 @@ namespace Дерево
 
         private void closeMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Дерево не буде збережено. Закрити програму?", "Попередження", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         public void CleanTree()
@@ -105,6 +112,7 @@ namespace Дерево
         private void addNode_Click(object sender, EventArgs e)
         {
             buildTree.AddNode();
+            ExpandNodes.ExpandAllNodes(treeView.Nodes);
         }
 
 
@@ -141,6 +149,7 @@ namespace Дерево
         private void uploadTree_Click(object sender, EventArgs e)
         {
             doneTree.UploadTree();
+            ExpandNodes.ExpandAllNodes(treeView.Nodes);
         }
 
         private void createPicture_Click(object sender, EventArgs e)
@@ -148,13 +157,43 @@ namespace Дерево
             treePicture.CreatePicture();
         }
 
+        //private void ShowUpdatedTreeView(TreeNode selectedNode)
+        //{
+        //    ShowUpdatedTreeView(selectedNode, expandNodes);
+        //}
+
+        //private void ShowUpdatedTreeView(TreeNode selectedNode, ExpandNodes expandNodes)
+        //{
+        //    NewShape updatedForm = new NewShape();
+        //    TreeView updatedTreeView = updatedForm.newTree;
+
+        //    // Додаємо обраний вузол як кореневий вузол
+        //    TreeNode rootNode = new TreeNode(selectedNode.Text);
+        //    updatedTreeView.Nodes.Add(rootNode);
+
+        //    // Додаємо всі нащадки обраного вузла
+        //    foreach (TreeNode childNode in selectedNode.Nodes)
+        //    {
+        //        rootNode.Nodes.Add((TreeNode)childNode.Clone());
+        //    }
+
+        //    ExpandNodes.ExpandAllNodes(updatedTreeView.Nodes);
+        //    //updatedForm.Controls.Add(updatedTreeView);
+        //    updatedForm.ShowDialog();
+        //}
+
         private void newTree_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeView.SelectedNode;
 
-            // Створіть нову форму GenealogyForm і передайте вибраний вузол
-            NewShape genealogyForm = new NewShape();
-            genealogyForm.ShowDialog();
+            if (selectedNode != null)
+            {
+                specialTree.UpdatedTreeView(selectedNode, expandNodes);
+            }
+            else
+            {
+                MessageBox.Show("Оберіть вузол дерева.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

@@ -58,10 +58,19 @@
             newTree.Anchor = AnchorStyles.Top;
             newTree.BackColor = Color.Honeydew;
             newTree.BorderStyle = BorderStyle.None;
+            newTree.Cursor = Cursors.Hand;
+            newTree.DrawMode = TreeViewDrawMode.OwnerDrawText;
+            newTree.Font = new Font("Tahoma", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            newTree.ForeColor = Color.DarkGreen;
+            newTree.FullRowSelect = true;
+            newTree.ImeMode = ImeMode.Off;
+            newTree.LineColor = Color.DarkGreen;
             newTree.Location = new Point(60, 69);
             newTree.Name = "newTree";
+            newTree.PathSeparator = "";
             newTree.Size = new Size(1019, 476);
             newTree.TabIndex = 3;
+            newTree.DrawNode += treeView_DrawNode;
             // 
             // pictureBox2
             // 
@@ -86,6 +95,7 @@
             canceldata.TabIndex = 25;
             canceldata.Text = "Закрити";
             canceldata.UseVisualStyleBackColor = false;
+            canceldata.Click += canceldata_Click;
             // 
             // savedata
             // 
@@ -99,9 +109,11 @@
             savedata.TabIndex = 24;
             savedata.Text = "Зберегти";
             savedata.UseVisualStyleBackColor = false;
+            savedata.Click += savedata_Click;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(700, 581);
             pictureBox1.Name = "pictureBox1";
@@ -133,10 +145,10 @@
         #endregion
 
         private Label label1;
-        private TreeView newTree;
         private PictureBox pictureBox2;
         private Button canceldata;
         private Button savedata;
         private PictureBox pictureBox1;
+        public TreeView newTree;
     }
 }

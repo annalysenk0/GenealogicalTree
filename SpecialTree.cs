@@ -15,51 +15,25 @@ namespace GenealogicalTree
             this.treeView = treeView;
         }
 
-        //public static void GenerateGenealogicalTree(TreeView treeView, TreeNode selectedNode)
-        //{
-        //    if (selectedNode == null)
-        //        return;
+        public void UpdatedTreeView(TreeNode selectedNode, ExpandNodes expandNodes)
+        {
+            NewShape updatedForm = new NewShape();
+            TreeView updatedTreeView = updatedForm.newTree;
 
-        //    // Очищення дерева
-        //    treeView.Nodes.Clear();
+            // Додаємо обраний вузол як кореневий вузол
+            TreeNode rootNode = new TreeNode(selectedNode.Text);
+            updatedTreeView.Nodes.Add(rootNode);
 
-        //    // Копіювання вибраного вузла та його нащадків
-        //    TreeNode rootNode = selectedNode.Clone() as TreeNode;
-        //    RemoveNonDescendants(rootNode);
+            // Додаємо всі нащадки обраного вузла
+            foreach (TreeNode childNode in selectedNode.Nodes)
+            {
+                rootNode.Nodes.Add((TreeNode)childNode.Clone());
+            }
 
-        //    // Додавання нового вузла до кореня дерева
-        //    treeView.Nodes.Add(rootNode);
-        //}
-
-        //private static void RemoveNonDescendants(TreeNode node)
-        //{
-        //    // Рекурсивно видалення всіх вузлів, які не є нащадками вибраного вузла
-        //    TreeNode selectedNode = node.TreeView.SelectedNode;
-        //    for (int i = node.Nodes.Count - 1; i >= 0; i--)
-        //    {
-        //        TreeNode childNode = node.Nodes[i];
-        //        if (!IsDescendant(childNode, selectedNode))
-        //        {
-        //            node.Nodes.RemoveAt(i);
-        //        }
-        //        else
-        //        {
-        //            RemoveNonDescendants(childNode);
-        //        }
-        //    }
-        //}
-
-        //private static bool IsDescendant(TreeNode node, TreeNode selectedNode)
-        //{
-        //    // Перевірка, чи є вузол нащадком вибраного вузла
-        //    while (node != null)
-        //    {
-        //        if (node == selectedNode)
-        //            return true;
-        //        node = node.Parent;
-        //    }
-        //    return false;
-        //}
+            ExpandNodes.ExpandAllNodes(updatedTreeView.Nodes);
+            //updatedForm.Controls.Add(updatedTreeView);
+            updatedForm.ShowDialog();
+        }
 
 
     }

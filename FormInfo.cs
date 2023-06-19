@@ -36,15 +36,19 @@ namespace Дерево
             string patronymicName = patronymicname.Text;
             string birthdate = date.Text;
 
-            if (!ValidateBirthdate(birthdate))
+            if (string.IsNullOrEmpty(birthdate))
             {
-                MessageBox.Show("Невірний формат дати народження. Введіть дату у форматі 'дд.мм.рррр'.", "Помилка");
+                birthdate = "Невідома";
+            }
+
+            else if (!ValidateBirthdate(birthdate))
+            {
+                MessageBox.Show("Невірний формат дати народження. Введіть дату у форматі 'дд.мм.рррр'. Якщо дата невідома, залиште поле порожнім.", "Помилка");
                 return;
             }
 
             Module modules = new Module(firstName, lastName, patronymicName, birthdate);
             Data = modules;
-            // Закриття поточної форми
             this.Close();
 
             MessageBox.Show("Дані збережено успішно.", "Повідомлення");
@@ -60,7 +64,6 @@ namespace Дерево
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //ExpandNodes.ExpandAllNodes(treeView.Nodes);
             SaveData();
         }
 
@@ -71,8 +74,13 @@ namespace Дерево
 
         private void canceldata_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Зміни не будуть збережені. Продовжити?", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            this.Close();
+            DialogResult result = MessageBox.Show("Зміни не будуть збережені. Продовжити?", "Попередження", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+            
         }
 
         public void GetData(Module modules)
