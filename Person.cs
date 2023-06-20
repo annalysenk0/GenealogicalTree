@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Дерево
 {
-    public class Module
+    public class Person
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PatronymicName { get; set; }
 
         public string Date { get; set; }
-        public List<Module> SubModules { get; set; }
+        public List<Person> SubModules { get; set; }
 
-        public Module(string firstName, string lastName, string patronymicName, string date)
+        public Person(string firstName, string lastName, string patronymicName, string date)
         {
             FirstName = firstName;
             LastName = lastName;
             PatronymicName = patronymicName;
             Date = date;
-            SubModules = new List<Module>();
+            SubModules = new List<Person>();
         }
     }
 }

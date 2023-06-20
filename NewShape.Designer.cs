@@ -136,6 +136,7 @@
             Controls.Add(savedata);
             Controls.Add(newTree);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "NewShape";
             Text = "NewShape";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

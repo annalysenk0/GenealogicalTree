@@ -16,15 +16,15 @@ namespace Дерево
 {
     public partial class FormInfo : Form
     {
-        public Module Data { get; private set; }
-        private Module modules;
+        public Person Data { get; private set; }
+        private Person modules;
         //private BuildTree buildTree;
         public FormInfo()
         {
             InitializeComponent();
 
         }
-        public Module GetModulesData(FormInfo form)
+        public Person GetModulesData(FormInfo form)
         {
             return modules;
         }
@@ -47,7 +47,7 @@ namespace Дерево
                 return;
             }
 
-            Module modules = new Module(firstName, lastName, patronymicName, birthdate);
+            Person modules = new Person(firstName, lastName, patronymicName, birthdate);
             Data = modules;
             this.Close();
 
@@ -67,7 +67,7 @@ namespace Дерево
             SaveData();
         }
 
-        public Module GetModules()
+        public Person GetModules()
         {
             return modules;
         }
@@ -83,7 +83,7 @@ namespace Дерево
             
         }
 
-        public void GetData(Module modules)
+        public void GetData(Person modules)
         {
             firstname.Text = modules.FirstName;
             lastname.Text = modules.LastName;

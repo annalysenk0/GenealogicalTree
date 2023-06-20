@@ -27,11 +27,11 @@ namespace GenealogicalTree
         if (openFileDialog.FileName != "")
         {
             string json = File.ReadAllText(openFileDialog.FileName);
-            List<Module> modules = JsonConvert.DeserializeObject<List<Module>>(json);
+            List<Person> modules = JsonConvert.DeserializeObject<List<Person>>(json);
 
             treeView.Nodes.Clear();
 
-            foreach (Module module in modules)
+            foreach (Person module in modules)
             {
                 TreeNode rootNode = CreateTreeNode(module);
                 treeView.Nodes.Add(rootNode);
@@ -39,11 +39,11 @@ namespace GenealogicalTree
         }
     }
         
-        private static TreeNode CreateTreeNode(Module module)
+        private static TreeNode CreateTreeNode(Person module)
         {
             TreeNode node = new TreeNode(module.FirstName);
 
-            foreach (Module childModule in module.SubModules)
+            foreach (Person childModule in module.SubModules)
             {
                 TreeNode childNode = CreateTreeNode(childModule);
                 node.Nodes.Add(childNode);

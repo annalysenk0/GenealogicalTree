@@ -23,7 +23,7 @@ namespace GenealogicalTree
             {
                 newForm.ShowDialog();
 
-                Module modules = newForm.Data;
+                Person modules = newForm.Data;
 
                 if (modules != null)
                 {
@@ -48,7 +48,7 @@ namespace GenealogicalTree
             {
                 newForm.ShowDialog();
 
-                Module modules = newForm.Data;
+                Person modules = newForm.Data;
 
                 if (modules != null)
                 {
@@ -85,7 +85,7 @@ namespace GenealogicalTree
 
             if (selectedNode != null)
             {
-                Module modules = selectedNode.Tag as Module;
+                Person modules = selectedNode.Tag as Person;
 
                 if (modules != null)
                 {
@@ -94,7 +94,7 @@ namespace GenealogicalTree
                         newForm.GetData(modules); // Передача даних вузла до форми редагування
                         newForm.ShowDialog();
 
-                        Module updatedModules = newForm.Data;
+                        Person updatedModules = newForm.Data;
 
                         if (updatedModules != null)
                         {

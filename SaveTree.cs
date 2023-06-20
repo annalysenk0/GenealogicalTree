@@ -21,11 +21,11 @@ namespace GenealogicalTree
         public void SaveInfo()
         {
          
-                List<Module> modules = new List<Module>();
+                List<Person> modules = new List<Person>();
 
                 foreach (TreeNode rootNode in treeView.Nodes)
                 {
-                    Module module = CreateModule(rootNode);
+                    Person module = CreateModule(rootNode);
                     modules.Add(module);
                 }
 
@@ -45,13 +45,13 @@ namespace GenealogicalTree
                 }
         }
 
-            private static Module CreateModule(TreeNode node)
+            private static Person CreateModule(TreeNode node)
             {
-                Module module = new Module(node.Text, "", "", "");
+                Person module = new Person(node.Text, "", "", "");
 
                 foreach (TreeNode childNode in node.Nodes)
                 {
-                    Module childModule = CreateModule(childNode);
+                    Person childModule = CreateModule(childNode);
                     module.SubModules.Add(childModule);
                 }
 
