@@ -64,6 +64,8 @@
             newTree.ForeColor = Color.DarkGreen;
             newTree.FullRowSelect = true;
             newTree.ImeMode = ImeMode.Off;
+            newTree.Indent = 50;
+            newTree.ItemHeight = 30;
             newTree.LineColor = Color.DarkGreen;
             newTree.Location = new Point(60, 69);
             newTree.Name = "newTree";
