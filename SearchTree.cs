@@ -22,7 +22,7 @@ namespace GenealogicalTree
             TreeNode selectedNode = treeView.SelectedNode;
             if (selectedNode != null)
             {
-                ExpandNodes.ExpandAllNodes(treeView.Nodes);
+                BuildTree.ExpandAllNodes(treeView.Nodes);
                 searchForm.node.Text = selectedNode.Text;
 
                 List<string> descendants = GetDescendants(selectedNode);

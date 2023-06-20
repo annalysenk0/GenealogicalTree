@@ -116,22 +116,30 @@ namespace GenealogicalTree
                     }
             }
                     
-    }
+        }
 
             public void DeleteNode()
-        {
-            // Переконайтеся, що вузол є обраним
-            if (treeView.SelectedNode != null)
             {
-                // Показати підтверджувальне повідомлення
-                DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Перевірка результату підтвердження
-                if (result == DialogResult.Yes)
+                if (treeView.SelectedNode != null)
                 {
-                    // Видалення обраного вузла
-                    treeView.SelectedNode.Remove();
+                    // Показати підтверджувальне повідомлення
+                    DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // Перевірка результату підтвердження
+                    if (result == DialogResult.Yes)
+                    {
+                        // Видалення обраного вузла
+                        treeView.SelectedNode.Remove();
+                    }
                 }
+            }
+
+        public static void ExpandAllNodes(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                node.Expand();
+                ExpandAllNodes(node.Nodes);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace Дерево
     public class FamilyMember
     {
         public string Name { get; set; }
-        public string Id { get; set; }
+        //public string Id { get; set; }
         public List<FamilyMember> Children { get; set; } = new List<FamilyMember>();
 
         public FamilyMember(string name)

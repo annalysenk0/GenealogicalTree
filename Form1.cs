@@ -18,7 +18,7 @@ namespace Дерево
         private DoneTree doneTree;
         private SaveTree saveTree;
         private TreePicture treePicture;
-        private ExpandNodes expandNodes;
+        private BuildTree expandNodes;
         private SpecialTree specialTree;
         public Form1()
         {
@@ -112,7 +112,7 @@ namespace Дерево
         private void addNode_Click(object sender, EventArgs e)
         {
             buildTree.AddNode();
-            ExpandNodes.ExpandAllNodes(treeView.Nodes);
+            BuildTree.ExpandAllNodes(treeView.Nodes);
         }
 
 
@@ -149,7 +149,7 @@ namespace Дерево
         private void uploadTree_Click(object sender, EventArgs e)
         {
             doneTree.UploadTree();
-            ExpandNodes.ExpandAllNodes(treeView.Nodes);
+            BuildTree.ExpandAllNodes(treeView.Nodes);
         }
 
         private void createPicture_Click(object sender, EventArgs e)

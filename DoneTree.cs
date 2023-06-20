@@ -33,24 +33,24 @@ namespace GenealogicalTree
 
             foreach (Module module in modules)
             {
-                TreeNode rootNode = CreateTreeNodeFromModule(module);
+                TreeNode rootNode = CreateTreeNode(module);
                 treeView.Nodes.Add(rootNode);
             }
         }
     }
         
-        private static TreeNode CreateTreeNodeFromModule(Module module)
-    {
-        TreeNode node = new TreeNode(module.FirstName);
-
-        foreach (Module childModule in module.SubModules)
+        private static TreeNode CreateTreeNode(Module module)
         {
-            TreeNode childNode = CreateTreeNodeFromModule(childModule);
-            node.Nodes.Add(childNode);
-        }
+            TreeNode node = new TreeNode(module.FirstName);
 
-        return node;
-    }
+            foreach (Module childModule in module.SubModules)
+            {
+                TreeNode childNode = CreateTreeNode(childModule);
+                node.Nodes.Add(childNode);
+            }
+
+            return node;
+        }
     }
 
 }

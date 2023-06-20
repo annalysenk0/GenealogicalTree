@@ -15,7 +15,7 @@ namespace GenealogicalTree
             this.treeView = treeView;
         }
 
-        public void UpdatedTreeView(TreeNode selectedNode, ExpandNodes expandNodes)
+        public void UpdatedTreeView(TreeNode selectedNode, BuildTree expandNodes)
         {
             NewShape updatedForm = new NewShape();
             TreeView updatedTreeView = updatedForm.newTree;
@@ -30,7 +30,7 @@ namespace GenealogicalTree
                 rootNode.Nodes.Add((TreeNode)childNode.Clone());
             }
 
-            ExpandNodes.ExpandAllNodes(updatedTreeView.Nodes);
+            BuildTree.ExpandAllNodes(updatedTreeView.Nodes);
             //updatedForm.Controls.Add(updatedTreeView);
             updatedForm.ShowDialog();
         }

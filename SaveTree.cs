@@ -25,7 +25,7 @@ namespace GenealogicalTree
 
                 foreach (TreeNode rootNode in treeView.Nodes)
                 {
-                    Module module = CreateModuleFromTreeNode(rootNode);
+                    Module module = CreateModule(rootNode);
                     modules.Add(module);
                 }
 
@@ -45,13 +45,13 @@ namespace GenealogicalTree
                 }
         }
 
-            private static Module CreateModuleFromTreeNode(TreeNode node)
+            private static Module CreateModule(TreeNode node)
             {
                 Module module = new Module(node.Text, "", "", "");
 
                 foreach (TreeNode childNode in node.Nodes)
                 {
-                    Module childModule = CreateModuleFromTreeNode(childNode);
+                    Module childModule = CreateModule(childNode);
                     module.SubModules.Add(childModule);
                 }
 
