@@ -28,7 +28,6 @@ namespace Дерево
             doneTree = new DoneTree(treeView);
             saveTree = new SaveTree(treeView);
             treePicture = new TreePicture(treeView);
-            //expandNodes = new ExpandNodes(treeView);
             specialTree = new SpecialTree(treeView);
         }
 
@@ -133,19 +132,6 @@ namespace Дерево
             buildTree.DeleteNode();
         }
 
-        //public void CreatePicture()
-        //{
-        //    // Створення об'єкту Bitmap для збереження зображення
-        //    Bitmap image = new Bitmap(treeView.Width, treeView.Height);
-
-        //    // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
-        //    treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
-
-        //    // Збереження зображення
-        //    image.Save("C:\\Users\\anech\\source\\repos\\Дерево\\tree_picture\\treeview_image.png", ImageFormat.Png);
-
-        //    MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
         private void uploadTree_Click(object sender, EventArgs e)
         {
             doneTree.UploadTree();
@@ -157,30 +143,6 @@ namespace Дерево
             treePicture.CreatePicture();
         }
 
-        //private void ShowUpdatedTreeView(TreeNode selectedNode)
-        //{
-        //    ShowUpdatedTreeView(selectedNode, expandNodes);
-        //}
-
-        //private void ShowUpdatedTreeView(TreeNode selectedNode, ExpandNodes expandNodes)
-        //{
-        //    NewShape updatedForm = new NewShape();
-        //    TreeView updatedTreeView = updatedForm.newTree;
-
-        //    // Додаємо обраний вузол як кореневий вузол
-        //    TreeNode rootNode = new TreeNode(selectedNode.Text);
-        //    updatedTreeView.Nodes.Add(rootNode);
-
-        //    // Додаємо всі нащадки обраного вузла
-        //    foreach (TreeNode childNode in selectedNode.Nodes)
-        //    {
-        //        rootNode.Nodes.Add((TreeNode)childNode.Clone());
-        //    }
-
-        //    ExpandNodes.ExpandAllNodes(updatedTreeView.Nodes);
-        //    //updatedForm.Controls.Add(updatedTreeView);
-        //    updatedForm.ShowDialog();
-        //}
 
         private void newTree_Click(object sender, EventArgs e)
         {

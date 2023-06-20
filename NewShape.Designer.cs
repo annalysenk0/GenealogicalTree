@@ -46,7 +46,7 @@
             label1.Font = new Font("Tahoma", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkGreen;
             label1.ImeMode = ImeMode.NoControl;
-            label1.Location = new Point(171, 12);
+            label1.Location = new Point(171, 18);
             label1.Name = "label1";
             label1.Size = new Size(839, 41);
             label1.TabIndex = 2;
@@ -67,7 +67,7 @@
             newTree.Indent = 50;
             newTree.ItemHeight = 30;
             newTree.LineColor = Color.DarkGreen;
-            newTree.Location = new Point(60, 69);
+            newTree.Location = new Point(60, 81);
             newTree.Name = "newTree";
             newTree.PathSeparator = "";
             newTree.Size = new Size(1019, 476);

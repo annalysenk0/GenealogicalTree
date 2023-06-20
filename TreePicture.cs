@@ -17,16 +17,27 @@ namespace GenealogicalTree
 
         public void CreatePicture()
         {
-            // Створення об'єкту Bitmap для збереження зображення
-            Bitmap image = new Bitmap(treeView.Width, treeView.Height);
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "PNG зображення (*.png)|*.png";
+                saveDialog.Title = "Збереження зображення";
 
-            // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
-            treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveDialog.FileName;
 
-            // Збереження зображення
-            image.Save("C:\\Users\\anech\\source\\repos\\Дерево\\tree_picture\\treeview_image.png", ImageFormat.Png);
+                    // Створення об'єкту Bitmap для збереження зображення
+                    Bitmap image = new Bitmap(treeView.Width, treeView.Height);
 
-            MessageBox.Show("Дерево було успішно збережено як зображення у папці 'tree_picture'.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
+                    treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
+
+                    // Збереження зображення
+                    image.Save(filePath, ImageFormat.Png);
+
+                    MessageBox.Show($"Дерево було успішно збережено у вигляді зображення.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
