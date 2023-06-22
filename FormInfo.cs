@@ -18,15 +18,27 @@ namespace Дерево
     {
         public Person Data { get; private set; }
         private Person modules;
-        //private BuildTree buildTree;
         public FormInfo()
         {
             InitializeComponent();
-
         }
-        public Person GetModulesData(FormInfo form)
+
+        //public Person GetModulesData(FormInfo form)
+        //{
+        //    return modules;
+        //}
+
+        //public Person GetModules()
+        //{
+        //    return modules;
+        //}
+        
+        public void GetData(Person modules)
         {
-            return modules;
+            firstname.Text = modules.FirstName;
+            lastname.Text = modules.LastName;
+            patronymicname.Text = modules.PatronymicName;
+            date.Text = modules.Date;
         }
 
         public void SaveData()
@@ -38,12 +50,13 @@ namespace Дерево
 
             if (string.IsNullOrEmpty(birthdate))
             {
-                birthdate = "Невідома";
+                birthdate = "Дата невідома";
             }
-
             else if (!ValidateBirthdate(birthdate))
             {
-                MessageBox.Show("Невірний формат дати народження. Введіть дату у форматі 'дд.мм.рррр'. Якщо дата невідома, залиште поле порожнім.", "Помилка");
+                MessageBox.Show("Невірний формат дати народження. " +
+                    "Введіть дату у форматі 'дд.мм.рррр'. " +
+                    "Якщо дата невідома, залиште поле порожнім.", "Помилка");
                 return;
             }
 
@@ -53,12 +66,11 @@ namespace Дерево
 
             MessageBox.Show("Дані збережено успішно.", "Повідомлення");
         }
+
         private bool ValidateBirthdate(string input)
         {
-            // Використання регулярного виразу для перевірки формату дати "дд.мм.рррр"
             string pattern = @"^\d{2}\.\d{2}\.\d{4}$";
             Regex regex = new Regex(pattern);
-
             return regex.IsMatch(input);
         }
 
@@ -67,30 +79,17 @@ namespace Дерево
             SaveData();
         }
 
-        public Person GetModules()
-        {
-            return modules;
-        }
-
         private void canceldata_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Зміни не будуть збережені. Продовжити?", "Попередження", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Зміни не будуть збережені. " +
+                "Продовжити?", "Попередження", MessageBoxButtons.OKCancel, 
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.OK)
             {
                 this.Close();
             }
-            
         }
-
-        public void GetData(Person modules)
-        {
-            firstname.Text = modules.FirstName;
-            lastname.Text = modules.LastName;
-            patronymicname.Text = modules.PatronymicName;
-            date.Text = modules.Date;
-        }
-
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
@@ -104,6 +103,5 @@ namespace Дерево
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }
-
     }
 }

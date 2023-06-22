@@ -7,6 +7,8 @@ using Дерево;
 
 namespace GenealogicalTree
 {
+    // Клас "Пошук у дереві" має методи пошуку зв'язків між вузлами
+    // (отримання предків та нащадків обраного вузла).
     public class SearchTree
     {
         private TreeView treeView;
@@ -18,13 +20,11 @@ namespace GenealogicalTree
         public void SearchConnexion()
         {
             Search searchForm = new Search();
-
             TreeNode selectedNode = treeView.SelectedNode;
             if (selectedNode != null)
             {
                 BuildTree.ExpandAllNodes(treeView.Nodes);
                 searchForm.node.Text = selectedNode.Text;
-
                 List<string> descendants = GetDescendants(selectedNode);
                 if (descendants.Count > 0)
                 {
@@ -34,7 +34,6 @@ namespace GenealogicalTree
                 {
                     searchForm.posterity.Text = "Нащадків не знайдено.";
                 }
-
                 List<string> ancestors = GetAncestors(selectedNode);
                 if (ancestors.Count > 0)
                 {
@@ -44,7 +43,6 @@ namespace GenealogicalTree
                 {
                     searchForm.ancestry.Text = "Предків не знайдено.";
                 }
-
                 searchForm.ShowDialog();
             }
         }
@@ -72,5 +70,4 @@ namespace GenealogicalTree
             return ancestors;
         }
     }
-    
 }

@@ -138,6 +138,7 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "NewShape";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "NewShape";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

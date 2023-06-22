@@ -20,33 +20,27 @@ namespace GenealogicalTree
         public NewShape()
         {
             InitializeComponent();
-            saveTree = new SaveTree(newTree);
+            //saveTree = new SaveTree(newTree);
         }
 
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            // Перевірка, чи вузол виділений
             bool isSelected = (e.State & TreeNodeStates.Selected) != 0;
 
-            // Визначення кольорів для виділеного та не-виділеного вузла
             Color foreColor = isSelected ? Color.Black : newTree.ForeColor;
             Color backColor = isSelected ? Color.DarkSeaGreen : newTree.BackColor;
 
-            // Заповнення фону вузла
             using (SolidBrush backgroundBrush = new SolidBrush(backColor))
             {
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
-            // Зображення тексту вузла
             TextRenderer.DrawText(e.Graphics, e.Node.Text, newTree.Font, e.Bounds, foreColor, TextFormatFlags.VerticalCenter);
 
-            // Явно встановлюємо фокус на вузол, щоб підсвітка залишалась після втрати фокусу
             if (isSelected)
             {
                 ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
             }
-
         }
 
         private void canceldata_Click(object sender, EventArgs e)

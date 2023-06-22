@@ -44,26 +44,21 @@ namespace Дерево
             }
         }
 
-
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            // Перевірка, чи вузол виділений
             bool isSelected = (e.State & TreeNodeStates.Selected) != 0;
 
-            // Визначення кольорів для виділеного та не-виділеного вузла
             Color foreColor = isSelected ? Color.Black : treeView.ForeColor;
             Color backColor = isSelected ? Color.DarkSeaGreen : treeView.BackColor;
 
-            // Заповнення фону вузла
             using (SolidBrush backgroundBrush = new SolidBrush(backColor))
             {
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
-            // Зображення тексту вузла
-            TextRenderer.DrawText(e.Graphics, e.Node.Text, treeView.Font, e.Bounds, foreColor, TextFormatFlags.VerticalCenter);
+            TextRenderer.DrawText(e.Graphics, e.Node.Text, treeView.Font,
+                e.Bounds, foreColor, TextFormatFlags.VerticalCenter);
 
-            // Явно встановлюємо фокус на вузол, щоб підсвітка залишалась після втрати фокусу
             if (isSelected)
             {
                 ControlPaint.DrawFocusRectangle(e.Graphics, e.Bounds);
@@ -77,17 +72,21 @@ namespace Дерево
 
         private void closeMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Дерево не буде збережено. Закрити програму?", "Попередження", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            //DialogResult result = MessageBox.Show("Дерево не буде збережено. " +
+            //    "Закрити програму?", "Попередження", MessageBoxButtons.OKCancel,
+            //    MessageBoxIcon.Warning);
 
-            if (result == DialogResult.OK)
-            {
+            //if (result == DialogResult.OK)
+            //{
                 this.Close();
-            }
+            //}
         }
 
-        public void CleanTree()
+        private void cleanTree_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Ви впевнені, що хочете очистити все дерево?", "Попередження про очищення", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Ви впевнені, що хочете очистити все дерево?",
+                "Попередження про очищення", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -95,18 +94,10 @@ namespace Дерево
             }
         }
 
-
-        private void cleanTree_Click(object sender, EventArgs e)
-        {
-            CleanTree();
-        }
-
-
         private void openNewForm_Click(object sender, EventArgs e)
         {
             buildTree.AddRoot();
         }
-
 
         private void addNode_Click(object sender, EventArgs e)
         {
@@ -114,18 +105,16 @@ namespace Дерево
             BuildTree.ExpandAllNodes(treeView.Nodes);
         }
 
-
         private void editNode_Click(object sender, EventArgs e)
         {
+
             buildTree.EditNode();
         }
-
 
         private void search_Click(object sender, EventArgs e)
         {
             searchTree.SearchConnexion();
         }
-
 
         private void deleteNode_Click(object sender, EventArgs e)
         {
@@ -143,7 +132,6 @@ namespace Дерево
             treePicture.CreatePicture();
         }
 
-
         private void newTree_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = treeView.SelectedNode;
@@ -154,12 +142,28 @@ namespace Дерево
             }
             else
             {
-                MessageBox.Show("Оберіть вузол дерева.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Оберіть вузол дерева.", "Помилка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Після закриття програми " +
+                "дерево не буде збережено. " +
+                "Ви хочете зберегти дані перед виходом?", "Попередження",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+            {
+                saveTree.SaveInfo();
+            }
+            if (result == DialogResult.No)
+            {
+                Application.Exit();
             }
         }
     }
-
-
 }
 
 

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace GenealogicalTree
 {
+    // Клас, що містить метод, який відповідає за створення
+    // генеалогічного дерева відносно обраного вузла.
     public class SpecialTree
     {
         private TreeView treeView;
@@ -20,11 +22,9 @@ namespace GenealogicalTree
             NewShape updatedForm = new NewShape();
             TreeView updatedTreeView = updatedForm.newTree;
 
-            // Додаємо обраний вузол як кореневий вузол
             TreeNode rootNode = new TreeNode(selectedNode.Text);
             updatedTreeView.Nodes.Add(rootNode);
 
-            // Додаємо всі нащадки обраного вузла
             foreach (TreeNode childNode in selectedNode.Nodes)
             {
                 rootNode.Nodes.Add((TreeNode)childNode.Clone());
@@ -34,7 +34,5 @@ namespace GenealogicalTree
             //updatedForm.Controls.Add(updatedTreeView);
             updatedForm.ShowDialog();
         }
-
-
     }
 }

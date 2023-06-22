@@ -224,6 +224,7 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             TransparencyKey = Color.Transparent;
+            FormClosed += Form1_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

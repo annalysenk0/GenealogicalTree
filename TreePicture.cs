@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GenealogicalTree
 {
+    // Клас збереження дерева у вигляді зображення.
     public class TreePicture
     {
         private TreeView treeView;
@@ -26,16 +27,13 @@ namespace GenealogicalTree
                 {
                     string filePath = saveDialog.FileName;
 
-                    // Створення об'єкту Bitmap для збереження зображення
                     Bitmap image = new Bitmap(treeView.Width, treeView.Height);
 
-                    // Запуск методу DrawToBitmap для зображення TreeView на Bitmap
                     treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
 
-                    // Збереження зображення
                     image.Save(filePath, ImageFormat.Png);
-
-                    MessageBox.Show($"Дерево було успішно збережено у вигляді зображення.", "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Дерево було успішно збережено у вигляді зображення.",
+                        "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

@@ -8,6 +8,8 @@ using Дерево;
 
 namespace GenealogicalTree
 {
+    // Клас містить методи, які відповідать за побудову генеалогічного дерева
+    // (додавання предка, нащадка, редагування вузлів та їх видалення).
     public class BuildTree
     {
         private TreeView treeView;
@@ -24,19 +26,16 @@ namespace GenealogicalTree
                 newForm.ShowDialog();
 
                 Person modules = newForm.Data;
-
                 if (modules != null)
                 {
-                    // Створення тексту вузла з іменем та датою народження
-                    string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
+                    string nodeText = modules.LastName + " " + modules.FirstName + 
+                        " " + modules.PatronymicName;
                     string nodeDate = modules.Date;
                     nodeText += " " + "(" + nodeDate + ")";
 
-                    // Створення нового вузла з головним нащадком
                     TreeNode rootNode = new TreeNode(nodeText);
                     rootNode.Tag = modules;
 
-                    // Додавання вузла до дерева
                     treeView.Nodes.Add(rootNode);
                 }
             }
@@ -47,31 +46,22 @@ namespace GenealogicalTree
             using (FormInfo newForm = new FormInfo())
             {
                 newForm.ShowDialog();
-
                 Person modules = newForm.Data;
-
                 if (modules != null)
                 {
-                    // Створення тексту вузла з іменем та датою народження
-                    string nodeText = modules.LastName + " " + modules.FirstName + " " + modules.PatronymicName;
+                    string nodeText = modules.LastName + " " + modules.FirstName + 
+                        " " + modules.PatronymicName;
                     string nodeDate = modules.Date;
                     nodeText += " " + "(" + nodeDate + ")";
-
-                    // Створення нового вузла з головним нащадком
                     TreeNode rootNode = new TreeNode(nodeText);
                     rootNode.Tag = modules;
-
-                    // Отримання вибраного вузла в дереві
                     TreeNode selectedNode = treeView.SelectedNode;
-
                     if (selectedNode != null)
                     {
-                        // Додавання нового вузла як нащадка до вибраного вузла
                         selectedNode.Nodes.Add(rootNode);
                     }
                     else
                     {
-                        // Якщо не вибрано жодного вузла, додати новий вузол до кореня дерева
                         treeView.Nodes.Add(rootNode);
                     }
                 }
@@ -91,20 +81,20 @@ namespace GenealogicalTree
                 {
                     using (FormInfo newForm = new FormInfo())
                     {
-                        newForm.GetData(modules); // Передача даних вузла до форми редагування
+                        newForm.GetData(modules);
                         newForm.ShowDialog();
 
                         Person updatedModules = newForm.Data;
 
                         if (updatedModules != null)
                         {
-                            // Оновлення тексту вузла з оновленими даними
-                            string nodeText = updatedModules.LastName + " " + updatedModules.FirstName + " " + updatedModules.PatronymicName;
+                            string nodeText = updatedModules.LastName + " " 
+                                + updatedModules.FirstName + " " 
+                                + updatedModules.PatronymicName;
                             string nodeDate = updatedModules.Date;
                             nodeText += " " + "(" + nodeDate + ")";
                             selectedNode.Text = nodeText;
 
-                            // Оновлення даних вузла
                             selectedNode.Tag = updatedModules;
                         }
                     }
@@ -112,7 +102,10 @@ namespace GenealogicalTree
                 }
                 else
                     {
-                        MessageBox.Show($"Редагування даних можливе лише при початковому створенні дерева. Завантажене дерево можна лише переглядати, додавати нові зв'язки та робити пошук нащадків й предків", "Попередження");
+                        MessageBox.Show($"Редагування даних можливе лише при " +
+                            $"початковому створенні дерева. Завантажене дерево " +
+                            $"можна лише переглядати, додавати нові зв'язки та " +
+                            $"робити пошук нащадків й предків", "Попередження");
                     }
             }
                     
@@ -123,7 +116,9 @@ namespace GenealogicalTree
              if (treeView.SelectedNode != null)
              {
                 // Показати підтверджувальне повідомлення
-                DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити вузол?", "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Ви впевнені, що хочете " +
+                    "видалити вузол?", "Підтвердження видалення", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 // Перевірка результату підтвердження
                 if (result == DialogResult.Yes)

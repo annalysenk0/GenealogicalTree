@@ -24,20 +24,20 @@ namespace GenealogicalTree
             openFileDialog.Title = "Load TreeView from JSON";
             openFileDialog.ShowDialog();
 
-        if (openFileDialog.FileName != "")
-        {
-            string json = File.ReadAllText(openFileDialog.FileName);
-            List<Person> modules = JsonConvert.DeserializeObject<List<Person>>(json);
-
-            treeView.Nodes.Clear();
-
-            foreach (Person module in modules)
+            if (openFileDialog.FileName != "")
             {
-                TreeNode rootNode = CreateTreeNode(module);
-                treeView.Nodes.Add(rootNode);
+                string json = File.ReadAllText(openFileDialog.FileName);
+                List<Person> modules = JsonConvert.DeserializeObject<List<Person>>(json);
+
+                treeView.Nodes.Clear();
+
+                foreach (Person module in modules)
+                {
+                    TreeNode rootNode = CreateTreeNode(module);
+                    treeView.Nodes.Add(rootNode);
+                }
             }
         }
-    }
         
         private static TreeNode CreateTreeNode(Person module)
         {
@@ -52,6 +52,5 @@ namespace GenealogicalTree
             return node;
         }
     }
-
 }
 
