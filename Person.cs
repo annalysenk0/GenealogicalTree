@@ -13,7 +13,8 @@ namespace Дерево
         public string PatronymicName { get; set; }
 
         public string Date { get; set; }
-        public List<Person> SubModules { get; set; }
+        
+        //public List<Person> SubModules { get; set; }
 
         public Person(string firstName, string lastName, string patronymicName, string date)
         {
@@ -21,7 +22,7 @@ namespace Дерево
             LastName = lastName;
             PatronymicName = patronymicName;
             Date = date;
-            SubModules = new List<Person>();
+            //SubModules = new List<Person>();
         }
     }
 }

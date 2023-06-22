@@ -65,7 +65,6 @@ namespace GenealogicalTree
                         treeView.Nodes.Add(rootNode);
                     }
                 }
-                
             }
         }
 
