@@ -8,7 +8,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using GenealogicalTree;
 
-namespace Дерево
+namespace GenealogicalTree
 {
     public partial class Form1 : Form
     {

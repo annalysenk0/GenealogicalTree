@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Дерево
+namespace GenealogicalTree
 {
     // Клас відповідає за збереження даних про члена сім'ї,
     // має властивості: персональні дані та список дітей. 

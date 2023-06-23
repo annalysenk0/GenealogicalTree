@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Дерево
+namespace GenealogicalTree
 {
     public partial class FormInfo : Form
     {

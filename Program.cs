@@ -1,4 +1,4 @@
-namespace Дерево
+namespace GenealogicalTree
 {
     internal static class Program
     {

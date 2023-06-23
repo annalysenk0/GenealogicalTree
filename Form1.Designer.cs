@@ -1,4 +1,4 @@
-﻿namespace Дерево
+﻿namespace GenealogicalTree
 {
     partial class Form1
     {

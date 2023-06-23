@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Дерево
+namespace GenealogicalTree
 {
     // Клас визначає структуру об'єкта, що представляє особу.
     // Він має публічні властивості (FirstName, LastName, PatronymicName

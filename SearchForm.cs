@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Дерево
+namespace GenealogicalTree
 {
     public partial class SearchForm : Form
     {

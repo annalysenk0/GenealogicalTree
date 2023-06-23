@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static GenealogicalTree.DoneTree;
-using Дерево;
 
 namespace GenealogicalTree
 {
