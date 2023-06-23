@@ -8,7 +8,6 @@ using System.Xml;
 using Newtonsoft.Json;
 using GenealogicalTree;
 
-
 namespace Дерево
 {
     public partial class Form1 : Form
@@ -35,7 +34,7 @@ namespace Дерево
         {
             foreach (FamilyMember child in member.Children)
             {
-                TreeNode childNode = new TreeNode(child.Name);
+                TreeNode childNode = new TreeNode(child.FullName);
                 childNode.Tag = child;
 
                 parentNode.Nodes.Add(childNode);
@@ -78,7 +77,7 @@ namespace Дерево
 
             //if (result == DialogResult.OK)
             //{
-                this.Close();
+            this.Close();
             //}
         }
 

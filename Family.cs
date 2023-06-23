@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Дерево
 {
+    // Клас відповідає за збереження даних про члена сім'ї,
+    // має властивості: персональні дані та список дітей. 
     public class FamilyMember
     {
-        public string Name { get; set; }
+        public string FullName { get; set; }
         public List<FamilyMember> Children { get; set; } = new List<FamilyMember>();
 
-        public FamilyMember(string name)
+        public FamilyMember(string fullName)
         {
-            Name = name;
+            FullName = fullName;
             Children = new List<FamilyMember>();
         }
     }

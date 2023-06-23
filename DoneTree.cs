@@ -12,7 +12,7 @@ namespace GenealogicalTree
 {
     // Клас відповідає за завантаження збереженого дерева .json
     // у treeview програми (перший метод) та перетворення 
-    // серіалізованих вузлів у список вузлів TreeNode 
+    // серіалізованих вузлів у список вузлів TreeNode (другий метод).
     public class DoneTree
     {
         private TreeView treeView;

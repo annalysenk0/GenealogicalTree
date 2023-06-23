@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Дерево
 {
+    // Клас визначає структуру об'єкта, що представляє особу.
+    // Він має публічні властивості (FirstName, LastName, PatronymicName
+    // та Date), які використовуються для зберігання даних про особу.
     public class Person
     {
         public string FirstName { get; set; }

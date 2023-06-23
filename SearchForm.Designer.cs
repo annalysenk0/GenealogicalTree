@@ -1,6 +1,6 @@
 ﻿namespace Дерево
 {
-    partial class Search
+    partial class SearchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
             labelSearch = new Label();
             node = new TextBox();
             ancestry = new TextBox();

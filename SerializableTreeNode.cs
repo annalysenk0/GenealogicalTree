@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GenealogicalTree
 {
-    // Клас, що визначає структуру для представлення дерева, яке може бути серіалізовано.
+    // Клас, що визначає структуру для представлення вузлів дерева,
+    // що можуть бути серіалізовані.
     public class SerializableTreeNode
     {
         public string Text { get; set; }

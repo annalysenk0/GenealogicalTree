@@ -29,11 +29,13 @@ namespace GenealogicalTree
 
                     Bitmap image = new Bitmap(treeView.Width, treeView.Height);
 
-                    treeView.DrawToBitmap(image, new Rectangle(0, 0, treeView.Width, treeView.Height));
+                    treeView.DrawToBitmap(image, new Rectangle
+                        (0, 0, treeView.Width, treeView.Height));
 
                     image.Save(filePath, ImageFormat.Png);
-                    MessageBox.Show($"Дерево було успішно збережено у вигляді зображення.",
-                        "Збереження дерева", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Дерево було успішно збережено " +
+                        $"у вигляді зображення.", "Збереження дерева", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

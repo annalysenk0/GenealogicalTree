@@ -1,6 +1,6 @@
 ﻿namespace GenealogicalTree
 {
-    partial class NewShape
+    partial class ShapeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewShape));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShapeForm));
             label1 = new Label();
             newTree = new TreeView();
             pictureBox2 = new PictureBox();

@@ -17,7 +17,7 @@ namespace Дерево
     public partial class FormInfo : Form
     {
         public Person Data { get; private set; }
-        private Person modules;
+        //private Person modules;
         public FormInfo()
         {
             InitializeComponent();
@@ -50,13 +50,20 @@ namespace Дерево
 
             if (string.IsNullOrEmpty(birthdate))
             {
-                birthdate = "Дата невідома";
+                birthdate = "дата невідома";
             }
             else if (!ValidateBirthdate(birthdate))
             {
                 MessageBox.Show("Невірний формат дати народження. " +
                     "Введіть дату у форматі 'дд.мм.рррр'. " +
                     "Якщо дата невідома, залиште поле порожнім.", "Помилка");
+                return;
+            }
+
+            if (ContainsDigits(firstName) || ContainsDigits(lastName) || ContainsDigits(patronymicName))
+            {
+                MessageBox.Show("Ім'я, прізвище та по батькові не повинні містити цифри.",
+                    "Помилка");
                 return;
             }
 
@@ -69,9 +76,19 @@ namespace Дерево
 
         private bool ValidateBirthdate(string input)
         {
+            if (input == "дата невідома")
+            {
+                return true;
+            }
+
             string pattern = @"^\d{2}\.\d{2}\.\d{4}$";
             Regex regex = new Regex(pattern);
             return regex.IsMatch(input);
+        }
+
+        private bool ContainsDigits(string input)
+        {
+            return input.Any(char.IsDigit);
         }
 
         private void saveButton_Click(object sender, EventArgs e)

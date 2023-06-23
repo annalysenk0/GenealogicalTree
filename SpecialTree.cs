@@ -19,7 +19,7 @@ namespace GenealogicalTree
 
         public void UpdatedTreeView(TreeNode selectedNode, BuildTree expandNodes)
         {
-            NewShape updatedForm = new NewShape();
+            ShapeForm updatedForm = new ShapeForm();
             TreeView updatedTreeView = updatedForm.newTree;
 
             TreeNode rootNode = new TreeNode(selectedNode.Text);

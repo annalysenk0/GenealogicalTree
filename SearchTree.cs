@@ -19,7 +19,7 @@ namespace GenealogicalTree
 
         public void SearchConnexion()
         {
-            Search searchForm = new Search();
+            SearchForm searchForm = new SearchForm();
             TreeNode selectedNode = treeView.SelectedNode;
             if (selectedNode != null)
             {

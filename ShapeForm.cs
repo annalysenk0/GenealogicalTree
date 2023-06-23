@@ -13,11 +13,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GenealogicalTree
 {
-    public partial class NewShape : Form
+    public partial class ShapeForm : Form
     {
         private SaveTree saveTree;
 
-        public NewShape()
+        public ShapeForm()
         {
             InitializeComponent();
             //saveTree = new SaveTree(newTree);
