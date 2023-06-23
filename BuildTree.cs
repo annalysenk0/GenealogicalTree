@@ -114,15 +114,12 @@ namespace GenealogicalTree
          {
              if (treeView.SelectedNode != null)
              {
-                // Показати підтверджувальне повідомлення
                 DialogResult result = MessageBox.Show("Ви впевнені, що хочете " +
                     "видалити вузол?", "Підтвердження видалення", 
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Перевірка результату підтвердження
                 if (result == DialogResult.Yes)
                 {
-                    // Видалення обраного вузла
                     treeView.SelectedNode.Remove();
                 }
              }

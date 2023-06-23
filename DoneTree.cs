@@ -10,6 +10,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GenealogicalTree
 {
+    // Клас відповідає за завантаження збереженого дерева .json
+    // у treeview програми (перший метод) та перетворення 
+    // серіалізованих вузлів у список вузлів TreeNode 
     public class DoneTree
     {
         private TreeView treeView;
@@ -62,12 +65,11 @@ namespace GenealogicalTree
                 string jsonFilePath = openFileDialog.FileName;
                 string jsonContent = File.ReadAllText(jsonFilePath);
 
-                List<SerializableTreeNode> nodes = JsonConvert.DeserializeObject<List<SerializableTreeNode>>(jsonContent);
+                List<SerializableTreeNode> nodes = 
+                    JsonConvert.DeserializeObject<List<SerializableTreeNode>>(jsonContent);
 
-                // Очищення поточного дерева перед завантаженням нового
                 treeView.Nodes.Clear();
 
-                // Додавання завантажених вузлів до дерева
                 treeView.Nodes.AddRange(ConvertToTreeViewNodes(nodes).ToArray());
             }
         }

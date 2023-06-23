@@ -9,8 +9,8 @@ using Дерево;
 
 namespace GenealogicalTree
 {
-    // Клас, який містить метод збереження інформаційної частини дерева
-    // та метод перетворення вузлів у module.
+    // Клас,що містить метод збереження інформаційної частини дерева (вузлів)
+    // та метод серіалізації вузлів.
     public class SaveTree
     {
         private TreeView treeView;
@@ -86,7 +86,7 @@ namespace GenealogicalTree
             }
         }
 
-        //public class SerializableTreeNode винесла окремо
+        //public class SerializableTreeNode ////винесла окремо
         //{
         //    public string Text { get; set; }
         //    public object Tag { get; set; }
