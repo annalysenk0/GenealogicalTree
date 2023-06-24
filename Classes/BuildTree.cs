@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace GenealogicalTree
 {
     // Клас містить методи, які відповідать за побудову генеалогічного дерева

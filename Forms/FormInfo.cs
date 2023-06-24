@@ -17,21 +17,10 @@ namespace GenealogicalTree
     public partial class FormInfo : Form
     {
         public Person Data { get; private set; }
-        //private Person modules;
         public FormInfo()
         {
             InitializeComponent();
         }
-
-        //public Person GetModulesData(FormInfo form)
-        //{
-        //    return modules;
-        //}
-
-        //public Person GetModules()
-        //{
-        //    return modules;
-        //}
         
         public void GetData(Person modules)
         {
@@ -60,7 +49,8 @@ namespace GenealogicalTree
                 return;
             }
 
-            if (ContainsDigits(firstName) || ContainsDigits(lastName) || ContainsDigits(patronymicName))
+            if (ContainsDigits(firstName) || ContainsDigits(lastName) || 
+                ContainsDigits(patronymicName))
             {
                 MessageBox.Show("Ім'я, прізвище та по батькові не повинні містити цифри.",
                     "Помилка");

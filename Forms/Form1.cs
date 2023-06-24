@@ -71,21 +71,14 @@ namespace GenealogicalTree
 
         private void closeMenuItem_Click(object sender, EventArgs e)
         {
-            //DialogResult result = MessageBox.Show("Дерево не буде збережено. " +
-            //    "Закрити програму?", "Попередження", MessageBoxButtons.OKCancel,
-            //    MessageBoxIcon.Warning);
-
-            //if (result == DialogResult.OK)
-            //{
             this.Close();
-            //}
         }
 
         private void cleanTree_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Ви впевнені, що хочете очистити все дерево?",
-                "Попередження про очищення", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Ви впевнені, " +
+                "що хочете очистити все дерево?", "Попередження про очищення",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
