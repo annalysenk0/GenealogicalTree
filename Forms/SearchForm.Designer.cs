@@ -63,10 +63,11 @@
             node.BorderStyle = BorderStyle.None;
             node.Font = new Font("Tahoma", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             node.ForeColor = Color.DarkGreen;
-            node.Location = new Point(51, 65);
+            node.Location = new Point(20, 65);
+            node.Multiline = true;
             node.Name = "node";
             node.ReadOnly = true;
-            node.Size = new Size(787, 33);
+            node.Size = new Size(865, 48);
             node.TabIndex = 2;
             node.TextAlign = HorizontalAlignment.Center;
             // 

@@ -104,10 +104,13 @@ namespace GenealogicalTree
 
             if (!string.IsNullOrEmpty(textBox.Text))
             {
+                int selectionStart = textBox.SelectionStart;
+
                 string firstLetter = textBox.Text.Substring(0, 1);
                 string remainingText = textBox.Text.Substring(1);
                 textBox.Text = firstLetter.ToUpper() + remainingText;
-                textBox.SelectionStart = textBox.Text.Length;
+
+                textBox.SelectionStart = selectionStart;
             }
         }
     }
