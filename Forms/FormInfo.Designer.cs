@@ -48,6 +48,7 @@
             // 
             // lable0
             // 
+            lable0.Anchor = AnchorStyles.Top;
             lable0.AutoSize = true;
             lable0.BackColor = Color.DarkSeaGreen;
             lable0.BorderStyle = BorderStyle.FixedSingle;
@@ -61,6 +62,7 @@
             // 
             // lastname
             // 
+            lastname.Anchor = AnchorStyles.Top;
             lastname.AutoCompleteMode = AutoCompleteMode.Suggest;
             lastname.BackColor = SystemColors.Window;
             lastname.Location = new Point(311, 60);
@@ -71,6 +73,7 @@
             // 
             // firstname
             // 
+            firstname.Anchor = AnchorStyles.Top;
             firstname.BackColor = SystemColors.Window;
             firstname.Location = new Point(311, 101);
             firstname.Name = "firstname";
@@ -80,6 +83,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = Color.DarkSeaGreen;
             label1.BorderStyle = BorderStyle.FixedSingle;
@@ -93,6 +97,7 @@
             // 
             // patronymicname
             // 
+            patronymicname.Anchor = AnchorStyles.Top;
             patronymicname.BackColor = SystemColors.Window;
             patronymicname.Location = new Point(311, 141);
             patronymicname.Name = "patronymicname";
@@ -102,6 +107,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.BackColor = Color.DarkSeaGreen;
             label2.BorderStyle = BorderStyle.FixedSingle;
@@ -129,6 +135,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.BackColor = Color.DarkSeaGreen;
             label4.BorderStyle = BorderStyle.FixedSingle;
@@ -142,6 +149,7 @@
             // 
             // savedata
             // 
+            savedata.Anchor = AnchorStyles.Bottom;
             savedata.BackColor = Color.DarkSeaGreen;
             savedata.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
             savedata.ForeColor = SystemColors.InactiveCaptionText;
@@ -155,6 +163,7 @@
             // 
             // canceldata
             // 
+            canceldata.Anchor = AnchorStyles.Bottom;
             canceldata.BackColor = Color.DarkSeaGreen;
             canceldata.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
             canceldata.ForeColor = SystemColors.InactiveCaptionText;
@@ -168,6 +177,7 @@
             // 
             // date
             // 
+            date.Anchor = AnchorStyles.Top;
             date.BackColor = SystemColors.Window;
             date.Location = new Point(311, 181);
             date.Name = "date";
@@ -176,6 +186,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Bottom;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(187, 271);
             pictureBox2.Name = "pictureBox2";
@@ -186,6 +197,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(187, 349);
             pictureBox1.Name = "pictureBox1";

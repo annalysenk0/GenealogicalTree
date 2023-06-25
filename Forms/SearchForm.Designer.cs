@@ -58,7 +58,6 @@
             // 
             // node
             // 
-            node.AccessibleRole = AccessibleRole.Text;
             node.Anchor = AnchorStyles.Top;
             node.BackColor = Color.Honeydew;
             node.BorderStyle = BorderStyle.None;
@@ -75,12 +74,12 @@
             // 
             ancestry.Anchor = AnchorStyles.Top;
             ancestry.BackColor = SystemColors.Window;
-            ancestry.Location = new Point(20, 153);
+            ancestry.Location = new Point(20, 158);
             ancestry.Multiline = true;
             ancestry.Name = "ancestry";
             ancestry.ReadOnly = true;
             ancestry.ScrollBars = ScrollBars.Vertical;
-            ancestry.Size = new Size(368, 189);
+            ancestry.Size = new Size(368, 225);
             ancestry.TabIndex = 3;
             ancestry.WordWrap = false;
             // 
@@ -116,21 +115,21 @@
             // 
             posterity.Anchor = AnchorStyles.Top;
             posterity.BackColor = SystemColors.Window;
-            posterity.Location = new Point(517, 153);
+            posterity.Location = new Point(517, 158);
             posterity.Multiline = true;
             posterity.Name = "posterity";
             posterity.ReadOnly = true;
             posterity.ScrollBars = ScrollBars.Vertical;
-            posterity.Size = new Size(368, 189);
+            posterity.Size = new Size(368, 225);
             posterity.TabIndex = 5;
             // 
             // canceldata
             // 
-            canceldata.Anchor = AnchorStyles.Top;
+            canceldata.Anchor = AnchorStyles.Bottom;
             canceldata.BackColor = Color.DarkSeaGreen;
             canceldata.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
             canceldata.ForeColor = SystemColors.InactiveCaptionText;
-            canceldata.Location = new Point(390, 455);
+            canceldata.Location = new Point(390, 464);
             canceldata.Name = "canceldata";
             canceldata.Size = new Size(145, 40);
             canceldata.TabIndex = 19;
@@ -140,9 +139,9 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.Top;
+            pictureBox1.Anchor = AnchorStyles.Bottom;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(341, 494);
+            pictureBox1.Location = new Point(341, 503);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(242, 33);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -151,16 +150,16 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Anchor = AnchorStyles.Top;
+            pictureBox2.Anchor = AnchorStyles.Bottom;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(341, 423);
+            pictureBox2.Location = new Point(341, 432);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(242, 33);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 21;
             pictureBox2.TabStop = false;
             // 
-            // Search
+            // SearchForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -176,7 +175,7 @@
             Controls.Add(node);
             Controls.Add(labelSearch);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Search";
+            Name = "SearchForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

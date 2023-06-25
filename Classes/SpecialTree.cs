@@ -31,7 +31,6 @@ namespace GenealogicalTree
             }
 
             BuildTree.ExpandAllNodes(updatedTreeView.Nodes);
-            //updatedForm.Controls.Add(updatedTreeView);
             updatedForm.ShowDialog();
         }
     }

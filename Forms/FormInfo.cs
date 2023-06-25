@@ -21,7 +21,7 @@ namespace GenealogicalTree
         {
             InitializeComponent();
         }
-        
+
         public void GetData(Person modules)
         {
             firstname.Text = modules.FirstName;
@@ -49,11 +49,11 @@ namespace GenealogicalTree
                 return;
             }
 
-            if (ContainsDigits(firstName) || ContainsDigits(lastName) || 
+            if (ContainsDigits(firstName) || ContainsDigits(lastName) ||
                 ContainsDigits(patronymicName))
             {
-                MessageBox.Show("Ім'я, прізвище та по батькові не повинні містити цифри.",
-                    "Помилка");
+                MessageBox.Show("Ім'я, прізвище та по батькові" +
+                    " не повинні містити цифри.", "Помилка");
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace GenealogicalTree
         private void canceldata_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Зміни не будуть збережені. " +
-                "Продовжити?", "Попередження", MessageBoxButtons.OKCancel, 
+                "Продовжити?", "Попередження", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning);
 
             if (result == DialogResult.OK)
