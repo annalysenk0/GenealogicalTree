@@ -20,7 +20,6 @@ namespace GenealogicalTree
         public ShapeForm()
         {
             InitializeComponent();
-            //saveTree = new SaveTree(newTree);
         }
 
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
